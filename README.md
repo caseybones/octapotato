@@ -1,5 +1,5 @@
-# fuzzy-train
-# Installation
+# Octapotato
+## Installation
 
 Install all dependencies
 ~~~~
