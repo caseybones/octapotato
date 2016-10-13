@@ -2,6 +2,9 @@
   "name": "Octapotato",
   "version": "0.0.1",
   "description": "blah",
+  "engines": {
+    "node": "4.4.3"
+  },
   "main": "dist/server/server.js",
   "scripts": {
     "env": "env",
@@ -33,7 +36,10 @@
   },
   "dependencies": {
     "babel-runtime": "^6.11.6",
+    "bell": "^8.3.0",
+    "googleapis": "^14.0.0",
     "hapi": "^15.1.1",
+    "hapi-auth-google": "^10.0.0",
     "hapi-react-views": "^9.2.0",
     "inert": "^4.0.2",
     "jquery": "^3.1.1",
