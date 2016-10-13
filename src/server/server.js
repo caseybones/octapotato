@@ -32,7 +32,26 @@ server.register(plugins, function (error) {
     isSecure: false, //TODO: implement HTTPS and fix this
     clientId: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    location: "http://SYDLT5CG5431W4F.corp.sita.aero:3000"
+    location: server.info.uri
+  });
+
+  /* server.route({
+     method: 'GET',
+     path: '/{path*}',
+     handler: {
+       directory: {
+         path: './dist/public'
+       }
+     }
+   });*/
+
+  server.route({
+    method: 'GET',
+    path: '/words/random',
+    handler: function (request, response) {
+      var randomWord = wordDictionary[Math.floor(Math.random() * wordDictionary.length)];
+      return response(randomWord);
+    }
   });
 
   server.route({
@@ -49,25 +68,6 @@ server.register(plugins, function (error) {
         }
         reply('<pre>' + JSON.stringify(request.auth.credentials, null, 4) + '</pre>');
       }
-    }
-  });
-
-  /*server.route({
-    method: 'GET',
-    path: '/{path*}',
-    handler: {
-      directory: {
-        path: './dist/public'
-      }
-    }
-  });*/
-
-  server.route({
-    method: 'GET',
-    path: '/words/random',
-    handler: function (request, response) {
-      var randomWord = wordDictionary[Math.floor(Math.random() * wordDictionary.length)];
-      return response(randomWord);
     }
   });
 

@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import SimpleJumble from './puzzles/SimpleJumble';
 import './util/Shuffle';
 import JQuery from 'jquery';
@@ -19,7 +20,7 @@ const style = {
 
 injectTapEventPlugin();
 
-JQuery.getJSON("http://localhost:3000/words/random", function (json) {
+JQuery.getJSON("/words/random", function (json) {
   var letters = json.word.toUpperCase().split("").shuffle();
   console.log(letters);
   var hint = json.hint;
@@ -27,7 +28,8 @@ JQuery.getJSON("http://localhost:3000/words/random", function (json) {
   ReactDOM.render(
     <MuiThemeProvider>
       <div style={style}>
-        <SimpleJumble letters={letters} hint={hint} />
+        <FlatButton label="Login" />
+        <SimpleJumble letters={letters} hint={hint} onclick="window.location.href='/googleauth'" />
       </div>
     </MuiThemeProvider >,
     document.getElementById('react-parent-node')
