@@ -11,6 +11,7 @@
     "build-client": "webpack",
     "build-server": "babel src/server -d dist/server",
     "build": "npm run build-server && npm run build-client",
+    "prestart": "npm run build",
     "start": "node dist/server/server.js"
   },
   "author": "CA",
